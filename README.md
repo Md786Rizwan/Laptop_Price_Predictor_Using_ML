@@ -33,7 +33,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/laptop-price-predictor.git
+git clone https://github.com/Md786Rizwan/laptop-price-predictor.git
 Navigate to the project directory:
 
 bash
