@@ -1,17 +1,23 @@
 💻 Laptop Price Predictor
+
+
 ![Screenshot 2024-07-14 172505](https://github.com/user-attachments/assets/8e24c1ce-2ca6-432b-885b-b36639ead60a)
 
 
 🚀 Overview
+
 The Laptop Price Predictor is a machine learning-based application that estimates the price of laptops based on various hardware specifications such as brand, RAM, CPU, GPU, storage, etc. This model helps users understand potential market pricing in Indian Rupees (INR) for their desired laptop configurations.
 
 Built using popular machine learning models, it provides an intuitive way to predict prices for new or used laptops, empowering buyers and sellers alike.
 
 🛠️ Features
+
 Multi-feature Input: Predicts prices based on brand, RAM, CPU, GPU, storage, and screen size.
 Multiple Model Support: Leverages various machine learning models like RandomForest, GradientBoosting, XGBoost, and VotingRegressor for robust predictions.
 Easy Price Display: Outputs predicted prices in Indian Rupees (INR) 💰.
 Simple Interface: Easy-to-use interface where users input specifications and get a predicted price.
+
+
 📊 Models Implemented
 The project explores a variety of machine learning models, including:
 
@@ -20,14 +26,19 @@ GradientBoostingRegressor 📈
 XGBoostRegressor 💡
 ExtraTreesRegressor 🌿
 VotingRegressor 🔗 (Combining multiple models for better accuracy)
+
+
 🔧 Technologies & Tools
+
 Programming Language: Python 🐍
 Libraries:
 pandas & numpy for data manipulation.
 scikit-learn for machine learning model building.
 xgboost for gradient boosting.
 matplotlib & seaborn for data visualization.
+
 Development Environment: Visual Studio Code (VS Code) 💻
+
 🏃‍♂️ Getting Started
 Prerequisites
 Ensure that you have Python 3.x and the required libraries installed:
@@ -79,11 +90,16 @@ CPU: Processor type and model.
 GPU: Graphics card model.
 Storage: SSD or HDD capacity.
 Screen Size & Resolution: Size and clarity of the display.
+
+
 📅 Future Enhancements
+
 🌐 Web App: Develop a web interface using FastAPI or Flask for broader accessibility.
 📊 Comparison Feature: Add functionality to compare predicted prices with real-world prices.
 📚 More Data: Extend the dataset to include more brands, models, and configurations for greater accuracy.
 🏗️ Contributing
+
+
 We welcome all kinds of contributions! If you’d like to improve this project, feel free to fork the repository, make changes, and submit a pull request.
 
 📜 License
@@ -93,5 +109,5 @@ This project is licensed under the MIT License. Feel free to use and modify it a
 For any questions or suggestions, reach out to:
 
 Md Rizwan - Data Analyst, Developer
-📧 Email
+📧 imdrizwan2019@gmail.com
 🔗 LinkedIn
