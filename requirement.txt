@@ -1,5 +1,0 @@
-streamlit
-sklearn
-numpy
-xgboost
-pandas
