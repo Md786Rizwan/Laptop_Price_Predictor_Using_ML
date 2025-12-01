@@ -1,11 +1,11 @@
 import streamlit as st
-import pickle
+import joblib
 import numpy as np
 
 # Load the model and data
 try:
-    pipe = pickle.load(open('pipe.pkl', 'rb'))
-    data = pickle.load(open("data.pkl", 'rb'))
+    pipe = joblib.load('pipe.pkl')
+    data = joblib.load('data.pkl')
 except FileNotFoundError:
     st.error("Model or data file not found. Please check the file path.")
     st.stop()
