@@ -4,3 +4,6 @@ numpy
 xgboost
 pandas
 joblib
+streamlit-option-menu
+matplotlib
+seaborn
