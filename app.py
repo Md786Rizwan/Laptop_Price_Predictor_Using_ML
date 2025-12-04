@@ -19,13 +19,17 @@ st.write("Predict the approximate price of a laptop in INR based on its configur
 # Load the model and data
 try:
     pipe = joblib.load("pipe.pkl")
-    data = joblib.load("data.pkl")
-except FileNotFoundError:
-    st.error("Model or data file not found. Please make sure 'pipe.pkl' and 'data.pkl' are present.")
-    st.stop()
 except Exception as e:
-    st.error(f"Error loading model or data: {e}")
+    st.error(f"❌ Failed to load pipe.pkl: {e}")
     st.stop()
+
+try:
+    data = joblib.load("data.pkl")
+except Exception as e:
+    st.error(f"❌ Failed to load data.pkl: {e}")
+    st.stop()
+
+st.success("✅ Model and data loaded successfully!")
 
 # ========== INPUT WIDGETS ==========
 
@@ -34,7 +38,7 @@ col1, col2 = st.columns(2)
 with col1:
     company = st.selectbox("Brand", sorted(data["Company"].unique()))
     type_ = st.selectbox("Type", sorted(data["TypeName"].unique()))
-    ram = st.selectbox("RAM (in GB)", [2, 4, 6, 8, 12, 16, 24, 32, 64])
+    ram = st.selectbox("RAM (in GB)", sorted(data["Ram"].unique()))
     touchscreen = st.selectbox("Touchscreen", ["No", "Yes"])
     ips = st.selectbox("IPS", ["No", "Yes"])
     os_ = st.selectbox("OS", sorted(data["os"].unique()))
@@ -71,18 +75,13 @@ with col2:
         ],
     )
     cpu = st.selectbox("CPU", sorted(data["cpu_brand"].unique()))
-    hdd = st.selectbox("HDD (in GB)", [0, 128, 256, 512, 1024, 2048])
-    ssd = st.selectbox("SSD (in GB)", [0, 8, 128, 256, 512, 1024])
+    hdd = st.selectbox("HDD (in GB)", sorted(data["HDD"].unique()))
+    ssd = st.selectbox("SSD (in GB)", sorted(data["SSD"].unique()))
     gpu = st.selectbox("GPU", sorted(data["GpuBrand"].unique()))
 
 st.markdown("---")
 
 # ========== PREDICTION BUTTON ==========
-reset = st.button("Reset inputs")
-
-if reset:
-    st.experimental_rerun()
-
 
 if st.button("Predict Price"):
     try:
@@ -99,27 +98,14 @@ if st.button("Predict Price"):
             Y_res = int(resolution.split("x")[1])
             ppi = ((X_res ** 2) + (Y_res ** 2)) ** 0.5 / screen_size
 
-            # Create query in the expected order
-            query = np.array(
-                [
-                    company,
-                    type_,
-                    ram,
-                    weight,
-                    touchscreen_val,
-                    ips_val,
-                    ppi,
-                    cpu,
-                    hdd,
-                    ssd,
-                    gpu,
-                    os_,
-                ],
-                dtype=object,
-            ).reshape(1, -1)
+            # Create a DataFrame with proper column names (must match training data)
+            query_df = pd.DataFrame(
+                [[company, type_, ram, weight, touchscreen_val, ips_val, ppi, cpu, hdd, ssd, gpu, os_]],
+                columns=["Company", "TypeName", "Ram", "Weight", "Touchscreen", "Ips", "ppi", "cpu_brand", "HDD", "SSD", "GpuBrand", "os"]
+            )
 
             # Predict
-            prediction = pipe.predict(query)
+            prediction = pipe.predict(query_df)
 
             # If model was trained on log(price), convert back with exp
             if np.all(np.isfinite(prediction)):
@@ -180,6 +166,6 @@ with st.expander("ℹ️ About this model"):
         - Predictions are approximate and may differ from actual market prices.
         """
     )
-    st.markdown("---")
-    st.caption("Made by Md Rizwan · Laptop Price Predictor (ML & Streamlit)")
 
+st.markdown("---")
+st.caption("Made by Md Rizwan · Laptop Price Predictor (ML & Streamlit)")
