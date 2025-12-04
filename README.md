@@ -1,8 +1,12 @@
 💻 Laptop Price Predictor
 
+## How to run locally
 
-![Screenshot 2024-07-14 172505](https://github.com/user-attachments/assets/8e24c1ce-2ca6-432b-885b-b36639ead60a)
+pip install -r requirements.txt  
+streamlit run app.py
 
+
+![alt text](image.png)
 
 🚀 Overview
 

@@ -1,2 +1,3 @@
 Company,TypeName,RAM_GB,Weight_kg,Touchscreen,IPS,PPI,CPU,HDD_GB,SSD_GB,GPU,OS,predicted_price,predicted_price_rounded,timestamp
 Dell,Gaming,16,3.0,0,0,169.45439769863833,AMD Processor,0,512,Intel,Windows,97386,97000,2025-12-02T00:37:53.529667
+Acer,Gaming,12,2.0000000000000004,0,0,169.45439769863833,AMD Processor,0,512,AMD,Mac,62715,63000,2025-12-02T00:49:54.840200
